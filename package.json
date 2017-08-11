@@ -4,7 +4,7 @@
   "description": "A react web interface",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp serve"
   },
   "repository": {
     "type": "git",
@@ -20,10 +20,10 @@
   },
   "homepage": "https://github.com/abialbon/react-appointments#readme",
   "devDependencies": {
+    "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
     "gulp-react": "^3.1.0",
-    "gulp-webserver": "^0.9.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "reactify": "^1.1.1"
