@@ -1,0 +1,31 @@
+{
+  "name": "react-appointments",
+  "version": "1.0.0",
+  "description": "A react web interface",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/abialbon/react-appointments.git"
+  },
+  "keywords": [
+    "React"
+  ],
+  "author": "Abialbon Paul",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abialbon/react-appointments/issues"
+  },
+  "homepage": "https://github.com/abialbon/react-appointments#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-react": "^3.1.0",
+    "gulp-webserver": "^0.9.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "reactify": "^1.1.1"
+  }
+}
