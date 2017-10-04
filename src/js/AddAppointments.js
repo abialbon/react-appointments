@@ -1,6 +1,12 @@
 const React = require('react');
 
 const AddAppointments = React.createClass({
+	getInitialState: function() {
+		return {
+			formVisible: false
+		}
+	},
+
 	clearForm: function() {
 		this.refs.name.value = '';
 		this.refs.course.value = '';
@@ -22,14 +28,23 @@ const AddAppointments = React.createClass({
 		this.clearForm();
 	},
 
+	toggleFormDisplay: function() {
+		this.setState({
+			formVisible: !this.state.formVisible
+		});
+	},
+
 	render: function() {
+			let formDisplay = {
+				display: this.state.formVisible ? 'block' : 'none'
+			}
 			return (
 				<div className="col-md-8">
 				<div className="card">
-						<div className="card-header">
+						<div onClick={ this.toggleFormDisplay } className="card-header">
 								Add an appointment
 						</div>
-						<div className="card-body">
+						<div style={ formDisplay } className="card-body">
 								<form onSubmit={ this.addAppointment } >
 									<div className="row">
 											<div className="col-lg-6">
