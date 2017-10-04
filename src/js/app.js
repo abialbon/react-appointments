@@ -16,19 +16,29 @@ const App = React.createClass({
         }
     },// GetInitialState
 
+    addAppointment: function(item) {
+        const tempApts = this.state.appointments;
+        tempApts.push(item);
+        this.setState({
+            appointments: tempApts
+        });
+    }, //addAppointment
+
     deleteAppointment: function(item) {
         let tempApts = _.without(this.state.appointments, item);
         this.setState({
             appointments: tempApts
         });
-    },
+    }, //deleteAppointment 
     
     render: function() {
         return (
             <div>
                 <div className="container">
                 <div className="row">
-                    <AddAppointments />
+                    <AddAppointments 
+                    handleAdd = { this.addAppointment }
+                    />
                     <Search />    
                 </div>
                 </div>
