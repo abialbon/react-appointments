@@ -5,7 +5,15 @@ const AddAppointments = require('./AddAppointments');
 const Search = require('./Search');
 const Appointments = require('./Appointments');
 
+const aptData = require('./aptData');
+
 const App = React.createClass({
+    getInitialState: function() {
+        return {
+            appointments: aptData
+        }
+    },// GetInitialState
+
     render: function() {
         return (
             <div>
@@ -15,7 +23,9 @@ const App = React.createClass({
                     <Search />    
                 </div>
                 </div>
-                    <Appointments />
+                    <Appointments 
+                        aptData={ this.state.appointments }
+                    />
             </div>
         );
     }

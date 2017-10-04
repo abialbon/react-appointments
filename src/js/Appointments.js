@@ -2,21 +2,28 @@ const React = require('react');
 
 const Appointments = React.createClass({
     render: function() {
+        const appointments = this.props.aptData;
+        const displayApts = appointments.map(function(item, index) {
+            return (
+                <div className="card" key={index}>
+                    <div className="card-body">
+                        <h4 className="card-title">{item.studentName}</h4>
+                        <h5>{ item.course }</h5>
+                        <p className="card-text">{item.notes}</p>
+                        <p>{ item.displayDate }</p>
+                        <button className="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            );
+        });
         return (
-            <div>
+            <div className="container">
                 <div className="row">
                 <div className="col-sm-12">
                     <h4>Appointments</h4>
                 </div>
-            </div>
-                <div className="card">
-                        <div className="card-body">
-                            <h4 className="card-title">Student Name</h4>
-                            <h5>Course</h5>
-                            <p className="card-text">Appointment Notes</p>
-                            <a href="#" className="btn btn-danger">Delete</a>
-                        </div>
                 </div>
+                { displayApts }
             </div>
         );
     }
