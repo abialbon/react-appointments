@@ -1,21 +1,18 @@
 const React = require('react');
+const AptList = require('./AptList');
 
 const Appointments = React.createClass({
     render: function() {
         const appointments = this.props.aptData;
-        const displayApts = appointments.map(function(item, index) {
+        displayApts = appointments.map(function(item, index){
             return (
-                <div className="card" key={index}>
-                    <div className="card-body">
-                        <h4 className="card-title">{item.studentName}</h4>
-                        <h5>{ item.course }</h5>
-                        <p className="card-text">{item.notes}</p>
-                        <p>{ item.displayDate }</p>
-                        <button className="btn btn-danger">Delete</button>
-                    </div>
-                </div>
+                <AptList 
+                    item = { item }
+                    key = { index }
+                    handleDelete = { this.props.handleDelete }
+                />
             );
-        });
+        }.bind(this));
         return (
             <div className="container">
                 <div className="row">

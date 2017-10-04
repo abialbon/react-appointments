@@ -1,11 +1,13 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const _ = require('lodash');
 
 const AddAppointments = require('./AddAppointments');
 const Search = require('./Search');
 const Appointments = require('./Appointments');
 
 const aptData = require('./aptData');
+
 
 const App = React.createClass({
     getInitialState: function() {
@@ -14,6 +16,13 @@ const App = React.createClass({
         }
     },// GetInitialState
 
+    deleteAppointment: function(item) {
+        let tempApts = _.without(this.state.appointments, item);
+        this.setState({
+            appointments: tempApts
+        });
+    },
+    
     render: function() {
         return (
             <div>
@@ -25,6 +34,7 @@ const App = React.createClass({
                 </div>
                     <Appointments 
                         aptData={ this.state.appointments }
+                        handleDelete = { this.deleteAppointment }
                     />
             </div>
         );
