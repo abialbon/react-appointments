@@ -1,11 +1,17 @@
 const React = require('react');
 
 const Search = React.createClass({
+    searchAppointments: function() {
+        let query = this.refs.search.value;
+        query = query.toLowerCase();
+        this.props.handleSearch(query);
+    }, 
+
     render: function() {
         return (
             <div className="col-md-4">
             <div className="input-group">
-                    <input type="text" className="form-control" placeholder="Search"/>
+                    <input onChange={this.searchAppointments } type="text" ref="search" className="form-control" placeholder="Search"/>
                     <div className="input-group-btn">
                         <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
                             Sort By

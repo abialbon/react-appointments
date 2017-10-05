@@ -12,7 +12,8 @@ const aptData = require('./aptData');
 const App = React.createClass({
     getInitialState: function() {
         return {
-            appointments: aptData
+            appointments: aptData,
+            filteredAppointments: aptData
         }
     },// GetInitialState
 
@@ -20,16 +21,35 @@ const App = React.createClass({
         const tempApts = this.state.appointments;
         tempApts.push(item);
         this.setState({
-            appointments: tempApts
+            appointments: tempApts,
+            filteredAppointments: tempApts
         });
     }, //addAppointment
 
     deleteAppointment: function(item) {
         let tempApts = _.without(this.state.appointments, item);
         this.setState({
-            appointments: tempApts
+            appointments: tempApts,
+            filteredAppointments: tempApts
         });
     }, //deleteAppointment 
+
+    searchAppointments: function(q) {
+        let tempApts = this.state.appointments;
+        tempApts = tempApts.filter(function(item) {
+            if (
+                (item.studentName.toLowerCase().indexOf(q) > -1) ||
+                (item.course.toLowerCase().indexOf(q) > -1) ||
+                (item.notes.toLowerCase().indexOf(q) > -1) ||
+                (item.displayDate.indexOf(q) > -1)
+            ) {
+                return item;
+            }
+        }.bind(this));
+        this.setState({
+            filteredAppointments: tempApts
+        });
+    },
     
     render: function() {
         return (
@@ -39,11 +59,13 @@ const App = React.createClass({
                     <AddAppointments 
                     handleAdd = { this.addAppointment }
                     />
-                    <Search />    
+                    <Search 
+                    handleSearch = {this.searchAppointments }
+                    />    
                 </div>
                 </div>
                     <Appointments 
-                        aptData={ this.state.appointments }
+                        aptData={ this.state.filteredAppointments }
                         handleDelete = { this.deleteAppointment }
                     />
             </div>
@@ -53,4 +75,3 @@ const App = React.createClass({
 
 ReactDOM.render(<App />,
                 document.getElementById('app'));
-                
