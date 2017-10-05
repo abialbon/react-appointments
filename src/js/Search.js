@@ -27,7 +27,7 @@ const Search = React.createClass({
             <div className="input-group">
                     <input onChange={this.searchAppointments } type="text" ref="search" className="form-control" placeholder="Search"/>
                     <div className="input-group-btn">
-                        <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                        <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                             Sort By
                         </button>
                         <div className="dropdown-menu dropdown-menu-right">

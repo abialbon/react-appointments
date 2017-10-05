@@ -9,6 +9,9 @@ nav {
 }
 .card-header {
     cursor: pointer;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 1.25rem;
 }
 #clear {
     margin-right: 10px;

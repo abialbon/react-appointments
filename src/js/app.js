@@ -50,7 +50,7 @@ const App = React.createClass({
         this.setState({
             filteredAppointments: tempApts
         });
-    }, 
+    },//searchAppointments
 
     sortAppointments: function(sortBy, order) {
         let tempApts = this.state.appointments;
@@ -63,6 +63,10 @@ const App = React.createClass({
             sortBy: sortBy,
             order: order
         });
+    },// sortAppointments
+
+    componentDidMount: function() {
+        this.sortAppointments(this.state.sortBy, this.state.order);
     },
 
     render: function() {
