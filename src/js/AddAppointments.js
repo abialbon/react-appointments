@@ -40,9 +40,9 @@ const AddAppointments = React.createClass({
 			}
 			return (
 				<div className="col-md-8">
-				<div className="card">
+				<div className="card" id="addAppointment">
 						<div onClick={ this.toggleFormDisplay } className="card-header">
-								Add an appointment
+							<i className="fa fa-chevron-down"> </i> Add an appointment
 						</div>
 						<div style={ formDisplay } className="card-body">
 								<form onSubmit={ this.addAppointment } >
@@ -74,7 +74,7 @@ const AddAppointments = React.createClass({
 									</div>
 									<div className="row">
 										<div className="col align-self-end">
-												<div onClick={ this.clearForm } className="btn btn-danger">Clear</div>
+												<div id="clear" onClick={ this.clearForm } className="btn btn-danger">Clear</div>
 												<button className="btn btn-primary">Add</button>
 										</div>
 									</div>

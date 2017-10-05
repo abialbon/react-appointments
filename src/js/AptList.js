@@ -6,7 +6,7 @@ const AptList = React.createClass({
     },
     render: function() {
         return (
-            <div className="card">
+            <div className="appointment card">
             <div className="card-body">
                 <h4 className="card-title">{this.props.item.studentName}</h4>
                 <h5>{ this.props.item.course }</h5>

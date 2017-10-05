@@ -8,12 +8,13 @@ const Appointments = require('./Appointments');
 
 const aptData = require('./aptData');
 
-
 const App = React.createClass({
     getInitialState: function() {
         return {
             appointments: aptData,
-            filteredAppointments: aptData
+            filteredAppointments: aptData,
+            sortBy: 'studentName',
+            order: 'asc'
         }
     },// GetInitialState
 
@@ -49,18 +50,34 @@ const App = React.createClass({
         this.setState({
             filteredAppointments: tempApts
         });
+    }, 
+
+    sortAppointments: function(sortBy, order) {
+        let tempApts = this.state.appointments;
+        tempApts = _.sortBy(tempApts, (x) => x[sortBy] );
+        if (order === 'desc') {
+            tempApts = tempApts.reverse();
+        }
+        this.setState({
+            filteredAppointments: tempApts,
+            sortBy: sortBy,
+            order: order
+        });
     },
-    
+
     render: function() {
         return (
             <div>
                 <div className="container">
-                <div className="row">
+                <div className="controls row">
                     <AddAppointments 
                     handleAdd = { this.addAppointment }
                     />
                     <Search 
+                    sortBy = {this.state.sortBy }
+                    order = { this.state.order }
                     handleSearch = {this.searchAppointments }
+                    handleSort = { this.sortAppointments }
                     />    
                 </div>
                 </div>
@@ -71,7 +88,7 @@ const App = React.createClass({
             </div>
         );
     }
-});
+}); 
 
 ReactDOM.render(<App />,
                 document.getElementById('app'));
